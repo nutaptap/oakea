@@ -14,7 +14,7 @@ export default function ProductLink({
   images,
 }: ProductLinkProps) {
   return (
-    <Link to={"/"} className="m-6">
+    <Link to={`/product/${id}`} className="m-6">
       <div
         className="w-60 h-80 bg-cover bg-center"
         style={{ backgroundImage: `url(${images[0]})` }}
