@@ -1,7 +1,7 @@
 import shopProducts from "../data/products.json";
 import ProductLink from "../components/ProductLink";
 
-export default function Store() {
+export default function Shop() {
   return (
     <main className="flex flex-col justify-center items-center">
       <h1>Store</h1>

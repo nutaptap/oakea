@@ -1,6 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import shopProducts from "../data/products.json";
 import { useState } from "react";
+import { useContext } from "react";
+import { FavoritesContext } from "../context/FavoritesContext";
 
 interface Product {
   id: number;
@@ -23,10 +25,23 @@ function Product() {
     setSelectedImage(image);
   };
 
+  const favoritesContext = useContext(FavoritesContext);
+
+  const handleFavoritesClick = () => {
+    if (favoritesContext) {
+      const { handleFavoritesClick } = favoritesContext;
+      handleFavoritesClick(product?.id || 0, product?.name || "");
+    }
+  };
+
+  const isFavorite = favoritesContext?.favoritesItems.some(
+    (item) => item.id === product?.id
+  );
+
   return (
     <main className="flex flex-col justify-center items-center">
       <span>
-        <Link to={"/"}>Store</Link> / {product?.name}
+        <Link to={"/"}>Shop</Link> / {product?.name}
       </span>
       <div className="mt-20 flex gap-10">
         <div>
@@ -48,15 +63,16 @@ function Product() {
         <div className="flex flex-col gap-4">
           <h2>{product?.name}</h2>
           <svg
+            onClick={handleFavoritesClick}
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            fill="none"
+            fill={isFavorite ? "#000000" : "none"}
             stroke="#000000"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
