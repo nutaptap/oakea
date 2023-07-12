@@ -3,6 +3,7 @@ import shopProducts from "../data/products.json";
 import { useState } from "react";
 import { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
+import { ShoppingCartContext } from "../context/ShoppingCartContext";
 
 interface Product {
   id: number;
@@ -26,6 +27,11 @@ function Product() {
   };
 
   const favoritesContext = useContext(FavoritesContext);
+  const shoppingCartContext = useContext(ShoppingCartContext);
+  if (!shoppingCartContext) {
+    return null;
+  }
+  const { cartItems, addToCart } = shoppingCartContext;
 
   const handleFavoritesClick = () => {
     if (favoritesContext) {
@@ -37,6 +43,30 @@ function Product() {
   const isFavorite = favoritesContext?.favoritesItems.some(
     (item) => item.id === product?.id
   );
+
+  const [tempQuantity, setTempQuantity] = useState(
+    cartItems.find((item) => {
+      return item.id === Number(id);
+    })?.quantity || 0
+  );
+
+  const addQuantity = () => {
+    setTempQuantity((currentQuantity) => {
+      return currentQuantity === 99 ? 99 : currentQuantity + 1;
+    });
+  };
+
+  const removeQuantity = () => {
+    setTempQuantity((currentQuantity) => {
+      return currentQuantity === 0 ? 0 : currentQuantity - 1;
+    });
+  };
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product.id, tempQuantity, product.name, product.price);
+    }
+  };
 
   return (
     <main className="flex flex-col justify-center items-center">
@@ -84,20 +114,27 @@ function Product() {
               <button
                 className="border border-stone-200 w-8 h-8 m-0"
                 type="button"
+                onClick={removeQuantity}
               >
                 -
               </button>
               <p className="border-t border-b border-stone-200 w-9 h-8 m-0 flex items-center justify-center">
-                1
+                {tempQuantity}
               </p>
               <button
                 className="border border-stone-200 w-8 h-8 m-0 bg-stone-200"
                 type="button"
+                onClick={addQuantity}
               >
                 +
               </button>
             </span>
-            <button className="border border-stone-200 p-3">Add to cart</button>
+            <button
+              className="border border-stone-200 p-3"
+              onClick={handleAddToCart}
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </div>
