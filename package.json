@@ -1,13 +1,14 @@
 {
   "name": "oakea",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vite build --base=/oakea/"
   },
   "dependencies": {
     "react": "^18.2.0",
