@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
+import { formatPrice } from "../utils/formatPrice";
 
 interface Product {
   id: number;
@@ -120,7 +121,7 @@ function Product() {
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
           <span className="border-y border-stone-200 py-5 tracking-wider text-2xl">
-            € {product?.price}
+            {product && formatPrice(product.price)}
           </span>
           <div className="flex flex-col gap-4">
             <span className="flex items-center gap-0 my-5">

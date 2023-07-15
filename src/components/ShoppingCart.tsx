@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import shopProducts from "../data/products.json";
+import { formatPrice } from "../utils/formatPrice";
 
 export function ShoppingCart() {
   const context = useContext(ShoppingCartContext);
@@ -47,7 +48,7 @@ export function ShoppingCart() {
                   style={{ backgroundImage: `url(${url})` }}
                 ></div>
                 <p className="w-[170px]">{item.name}</p>
-                <p className="w-[80px]">€ {price}</p>
+                <p className="w-[80px]">{price && formatPrice(price)}</p>
                 <p className="w-[30px]">x{item.quantity}</p>
                 <button
                   className="border border-stone-200 w-8 h-8 rounded-full flex items-center justify-center"
@@ -77,7 +78,7 @@ export function ShoppingCart() {
             Shipping will be calculated during checkout
           </p>
           <button className="border border-stone-800 text-white bg-stone-800 p-4 w-[300px] text-sm">
-            CHECKOUT · € {getTotal()}
+            CHECKOUT · {formatPrice(getTotal())}
           </button>
         </div>
       </div>
