@@ -32,7 +32,7 @@ export default function ProductLink({
   return (
     <Link to={`/product/${id}`} className="m-6">
       <div
-        className="w-60 h-80 bg-cover bg-center"
+        className="w-60 h-80 bg-cover bg-center rounded-lg"
         style={{ backgroundImage: `url(${images[0]})` }}
       ></div>
       <div className="flex justify-between my-3">

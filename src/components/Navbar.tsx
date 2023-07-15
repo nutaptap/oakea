@@ -8,39 +8,52 @@ export function Navbar() {
   if (!context) {
     return null;
   }
-  const { isCartOpen, toggleCart } = context;
+  const { isCartOpen, toggleCart, calculateTotalItems } = context;
 
   return (
     <>
-      <nav className="border-b border-stone-200 flex items-center justify-center font-sans font-medium text-stone-700 mb-16">
+      <nav className="border-b border-stone-200 flex items-center justify-center font-sans text-stone-700 mb-16">
         <div className="flex justify-between items-center p-4 px-28 w-screen max-w-7xl">
-          <ul className="flex gap-6">
+          <ul className="flex gap-6 text-sm tracking-wide">
             <li>
-              <Link to={"/"} className="hover:text-black">
+              <Link
+                to={"/"}
+                className="hover:text-black hover:font-semibold transition-all duration-200"
+              >
                 SHOP
               </Link>
             </li>
             <li>
-              <Link to={"/favorites"} className="hover:text-black">
+              <Link
+                to={"/favorites"}
+                className="hover:text-black hover:font-semibold transition-all duration-200"
+              >
                 FAVORITES
               </Link>
             </li>
           </ul>
-          <h1 className="tracking-wider text-2xl mr-32">OAKEA</h1>
-          <button onClick={toggleCart}>
+          <h1 className="tracking-wider text-2xl mr-32 hidden md:block">
+            OAKEA
+          </h1>
+          <button onClick={toggleCart} className="relative">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="22"
-              height="22"
-              viewBox="0 0 16 16"
-              style={{
-                stroke: "currentColor",
-                strokeWidth: 0.8,
-                fill: "currentColor",
-              }}
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+              <circle cx="10" cy="20.5" r="1" />
+              <circle cx="18" cy="20.5" r="1" />
+              <path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1" />
             </svg>
+            <div className="text-sm bg-white border border-stone-800 rounded-full absolute -top-3 -right-4 w-6 h-6 flex items-center justify-center">
+              {calculateTotalItems()}
+            </div>
           </button>
         </div>
       </nav>

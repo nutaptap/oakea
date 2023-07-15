@@ -23,6 +23,7 @@ type ShoppingCartContextType = {
   ) => void;
   removeFromCart: (id: number) => void;
   getTotal: () => number;
+  calculateTotalItems: () => number;
 };
 
 export const ShoppingCartContext = createContext<
@@ -32,20 +33,7 @@ export const ShoppingCartContext = createContext<
 export function ShoppingCartContextProvider({
   children,
 }: ShoppingCartProviderProps) {
-  const [cartItems, setCartItems] = useState<ShoppingCartItemType[]>([
-    {
-      id: 1,
-      name: "Taza de Café 30cl",
-      quantity: 3,
-      price: 7.95,
-    },
-    {
-      id: 2,
-      name: "Sofá Cama de 3 Plazas",
-      quantity: 1,
-      price: 279.95,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState<ShoppingCartItemType[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const toggleCart = () => {
@@ -89,6 +77,12 @@ export function ShoppingCartContextProvider({
     }, 0);
   };
 
+  const calculateTotalItems = () => {
+    return cartItems.reduce((totalItems, item) => {
+      return totalItems + item.quantity;
+    }, 0);
+  };
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -98,6 +92,7 @@ export function ShoppingCartContextProvider({
         addToCart,
         removeFromCart,
         getTotal,
+        calculateTotalItems,
       }}
     >
       {children}

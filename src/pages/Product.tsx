@@ -70,13 +70,26 @@ function Product() {
 
   return (
     <main className="flex flex-col justify-center items-center">
-      <span>
+      <div className="flex gap-2 items-center px-28 w-screen max-w-7xl">
         <Link to={"/"}>Shop</Link> / {product?.name}
-      </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#000000"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </div>
       <div className="mt-20 flex gap-10">
         <div>
           <div
-            className="w-[400px] h-[500px] bg-cover bg-center"
+            className="w-[400px] h-[500px] bg-cover bg-center rounded-lg"
             style={{ backgroundImage: `url(${selectedImage})` }}
           ></div>
           <div className="flex justify-between mt-4">
@@ -91,7 +104,7 @@ function Product() {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <h2>{product?.name}</h2>
+          <h2 className="tracking-wider text-2xl">{product?.name}</h2>
           <svg
             onClick={handleFavoritesClick}
             xmlns="http://www.w3.org/2000/svg"
@@ -106,11 +119,11 @@ function Product() {
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
-          <span className="border-y border-stone-200 py-5">
+          <span className="border-y border-stone-200 py-5 tracking-wider text-2xl">
             € {product?.price}
           </span>
           <div className="flex flex-col gap-4">
-            <span className="flex items-center gap-0">
+            <span className="flex items-center gap-0 my-5">
               <button
                 className="border border-stone-200 w-8 h-8 m-0"
                 type="button"

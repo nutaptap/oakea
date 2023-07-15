@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Taza de Café 30cl",
+        "name": "Coffee Mug 30cl",
         "price": 7.95,
         "images": [
             "/images/taza-1.webp",
@@ -12,7 +12,7 @@
     },
     {
         "id": 2,
-        "name": "Sofá Cama de 3 Plazas",
+        "name": "3-Seater Sofa Bed",
         "price": 279.95,
         "images": [
             "/images/sofa-1.webp",
@@ -23,7 +23,7 @@
     },
     {
         "id": 3,
-        "name": "Escritorio de Bambú",
+        "name": "Bamboo Desk",
         "price": 154.95,
         "images": [
             "/images/escritorio-1.webp",
@@ -34,7 +34,7 @@
     },
     {
         "id": 4,
-        "name": "Silla de Escritorio",
+        "name": "Desk Chair",
         "price": 129.95,
         "images": [
             "/images/silla-1.webp",
@@ -45,7 +45,7 @@
     },
     {
         "id": 5,
-        "name": "Palmera artificial",
+        "name": "Artificial Palm Tree",
         "price": 54.95,
         "images": [
             "/images/palmera-1.webp",
@@ -56,7 +56,7 @@
     },
     {
         "id": 6,
-        "name": "Estantería de bambú",
+        "name": "Bamboo Bookshelf",
         "price": 189.95,
         "images": [
             "/images/estanteria-1.webp",
@@ -67,7 +67,7 @@
     },
     {
         "id": 7,
-        "name": "Lámpara de Techo",
+        "name": "Ceiling Lamp",
         "price": 62.95,
         "images": [
             "/images/lampara-de-techo-1.jpg",
@@ -78,7 +78,7 @@
     },
     {
         "id": 8,
-        "name": "Lámpara de Mesa",
+        "name": "Table Lamp",
         "price": 34.95,
         "images": [
             "/images/lampara-de-mesa-1.jpg",
