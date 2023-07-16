@@ -10,4 +10,4 @@ I recently developed Oakea, an e-commerce website built using TypeScript and Rea
 
 ## Demo
 
-https://nutaptap.github.io/oakea/
+https://oakea.netlify.app/
