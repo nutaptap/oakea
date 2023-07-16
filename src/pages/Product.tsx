@@ -20,11 +20,11 @@ function Product() {
   );
 
   const [selectedImage, setSelectedImage] = useState<string | undefined>(
-    product?.images[0]
+    `/${product?.images[0]}`
   );
 
   const handleImageClick = (image: string) => {
-    setSelectedImage(image);
+    setSelectedImage("/" + image);
   };
 
   const favoritesContext = useContext(FavoritesContext);
@@ -98,7 +98,7 @@ function Product() {
               <div
                 key={index}
                 className="w-[80px] h-[110px] bg-cover bg-center"
-                style={{ backgroundImage: `url(${image})` }}
+                style={{ backgroundImage: `url(/${image})` }}
                 onClick={() => handleImageClick(image)}
               ></div>
             ))}
