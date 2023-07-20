@@ -38,6 +38,7 @@ export function ShoppingCart() {
           {cartItems.map((item) => {
             const url = shopProducts.find((product) => product.id === item.id)
               ?.images[0];
+            console.log(url);
             const price = shopProducts.find(
               (product) => product.id === item.id
             )?.price;
