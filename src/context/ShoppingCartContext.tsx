@@ -5,6 +5,7 @@ type ShoppingCartItemType = {
   name: string;
   quantity: number;
   price: number;
+  image: string;
 };
 
 type ShoppingCartProviderProps = {
@@ -19,7 +20,8 @@ type ShoppingCartContextType = {
     id: number,
     quantity: number,
     name: string,
-    price: number
+    price: number,
+    image: string
   ) => void;
   removeFromCart: (id: number) => void;
   getTotal: () => number;
@@ -44,7 +46,8 @@ export function ShoppingCartContextProvider({
     id: number,
     quantity: number,
     name: string,
-    price: number
+    price: number,
+    image: string
   ) => {
     const cartItemIndex = cartItems.findIndex((item) => item.id === id);
     if (quantity === 0) {
@@ -60,7 +63,7 @@ export function ShoppingCartContextProvider({
     } else {
       setCartItems((currentCartItems) => [
         ...currentCartItems,
-        { id: id, name: name, quantity: quantity, price: price },
+        { id: id, name: name, quantity: quantity, price: price, image: image },
       ]);
     }
   };

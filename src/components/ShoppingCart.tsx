@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
-import shopProducts from "../data/products.json";
 import { formatPrice } from "../utils/formatPrice";
 
 export function ShoppingCart() {
@@ -36,20 +35,17 @@ export function ShoppingCart() {
         </div>
         <div className="flex flex-col gap-6 ml-6 overflow-y-scroll max-h-[900px]">
           {cartItems.map((item) => {
-            const url = shopProducts.find((product) => product.id === item.id)
-              ?.images[0];
-            console.log(url);
-            const price = shopProducts.find(
-              (product) => product.id === item.id
-            )?.price;
+            console.log(item.image);
             return (
               <div key={item.id} className="flex gap-4 items-center">
                 <div
                   className="w-[80px] h-[100px] bg-cover bg-center rounded-md"
-                  style={{ backgroundImage: `url(${url})` }}
+                  style={{ backgroundImage: `url(/${item.image})` }}
                 ></div>
                 <p className="w-[170px]">{item.name}</p>
-                <p className="w-[80px]">{price && formatPrice(price)}</p>
+                <p className="w-[80px]">
+                  {item.price && formatPrice(item.price)}
+                </p>
                 <p className="w-[30px]">x{item.quantity}</p>
                 <button
                   className="border border-stone-200 w-8 h-8 rounded-full flex items-center justify-center"

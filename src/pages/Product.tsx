@@ -65,7 +65,20 @@ function Product() {
 
   const handleAddToCart = () => {
     if (product) {
-      addToCart(product.id, tempQuantity, product.name, product.price);
+      addToCart(
+        product.id,
+        tempQuantity,
+        product.name,
+        product.price,
+        product.images[0]
+      );
+      console.log(
+        product.id,
+        tempQuantity,
+        product.name,
+        product.price,
+        `/${product.images[0]}`
+      );
     }
   };
 
